@@ -2,16 +2,12 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import MovieCard from "./MovieCard";
 import SearchIcon from "./search.svg";
-const Movie1 = {
-  Title: "Amazing Spiderman Syndrome",
-  Year: "2012",
-  imdbID: "tt2586634",
-  Type: "movie",
-  Poster: "N/A",
-};
+
 const API_URL = "http://www.omdbapi.com?apikey=e54d193";
 const App = () => {
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setsearchTerm] = useState("");
+
   const SearchMovies = async (title) => {
     const response = await fetch(`${API_URL}&s=${title}`);
 
@@ -30,10 +26,18 @@ const App = () => {
       <div className="search">
         <input
           placeholder="Search for movies..."
-          value="..."
-          onChange={() => {}}
+          value={searchTerm}
+          onChange={(e) => {
+            setsearchTerm(e.target.value);
+          }}
         />
-        <img src={SearchIcon} alt="search" onClick={() => {}} />
+        <img
+          src={SearchIcon}
+          alt="search"
+          onClick={() => {
+            SearchMovies(searchTerm);
+          }}
+        />
       </div>
 
       {movies?.length > 0 ? (
