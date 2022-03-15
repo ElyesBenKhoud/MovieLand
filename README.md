@@ -1,3 +1,3 @@
 ## < Frontend Project >
 
-## 🤩 Good Luck! 🤩
+## 🤩 Short exercice playing with an API of Movies🤩
